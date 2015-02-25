@@ -1,11 +1,10 @@
 language: android
-
-
 script:
-  - sh gradlew packageRelease
-
-
+- sudo bash ./gradlew packageRelease
 deploy:
   provider: releases
   file:
-    - TestFairyApp/build/outputs/apk/TestFairyApp-release-unaligned.apk
+  - TestFairyApp/build/outputs/apk/TestFairyApp-release-unaligned.apk
+before_install:
+- openssl aes-256-cbc -K $encrypted_381106421151_key -iv $encrypted_381106421151_iv
+  -in testfairy.keystore.enc -out testfairy.keystore -d
