@@ -1,6 +1,6 @@
 language: android
 script:
-  - ls
+- ls
 - sudo bash ./gradlew packageRelease
 deploy:
   provider: releases
