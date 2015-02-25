@@ -1,7 +1,8 @@
 language: android
 script:
-- brew install gradle
-- gradle wrapper
+# - brew install gradle
+# - gradle wrapper
+- echo $ANDROID_HOME
 - ls
 - sudo bash ./gradlew packageRelease
 deploy:
