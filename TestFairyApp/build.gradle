@@ -1,0 +1,94 @@
+buildscript {
+    repositories {
+        mavenCentral()
+	//maven { url "file://Users/gilm/github/testfairy-gradle-plugin/repo" }
+        maven { url 'https://www.testfairy.com/maven' }
+    }
+
+    dependencies {
+        classpath 'com.android.tools.build:gradle:0.+'
+	classpath 'com.testfairy.plugins.gradle:testfairy:1.+'
+    }
+}
+
+apply plugin: 'android'
+apply plugin: 'testfairy'
+
+repositories {
+    mavenCentral()
+}
+
+task buildVersion << {
+
+	def rev = 0
+	def today = "19700101"
+
+	new ByteArrayOutputStream().withStream { os ->
+		def result = exec {
+			executable = 'svn'
+			args = ['info']
+			standardOutput = os
+		}
+
+		def matchLastChangedRev = (os.toString() =~ /Last Changed Rev: (\d+)/)
+		rev = matchLastChangedRev[0][1]
+	}
+
+	new ByteArrayOutputStream().withStream { os ->
+
+		def result = exec {
+			executable = 'date'
+			args = ['+%Y%m%d']
+			standardOutput = os
+		}
+
+		today = os.toString().replace("\n", "").replace("\t", "");
+	}
+
+	println "${today}-${rev}"
+}
+
+android {
+    compileSdkVersion 20
+    buildToolsVersion "20.0.0"
+
+    defaultConfig {
+        minSdkVersion 7
+        targetSdkVersion 17
+    }
+
+    signingConfigs {
+        release {
+            storeFile file("../testfairy.keystore")
+            storePassword "3u2u741H8ca34ap"
+            keyAlias "testfairyapp"
+            keyPassword "3u2u741H8ca34ap"
+        }
+    }
+
+    buildTypes {
+        release {
+            signingConfig signingConfigs.release
+            //runProguard true
+            //proguardFile getDefaultProguardFile('proguard-android.txt')
+        }
+    }
+
+    testfairyConfig {
+        apiKey "9dc08e8d93efd8622178f0c61faeaf112fbafcb4"
+	//apiKey "d700e27cf8c46bb493b268df0be25d8986e21915"
+	//serverEndpoint "http://bigbird.gs.dev.testfairy.net"
+	//notify true
+	recordOnBackground false
+	//testersGroups "foofoo"
+	autoUpdate true
+	maxDuration "unlimited"
+        //uploadProguardMapping true
+    }
+
+    lintOptions {
+        checkReleaseBuilds false
+        abortOnError false
+    }
+}
+
