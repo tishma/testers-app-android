@@ -16,7 +16,7 @@ script:
 - gradle wrapper
 - echo $ANDROID_HOME
 - ls
-- sudo bash ./gradlew packageRelease
+- sudo bash ./gradlew packageRelease --stacktrace
 
 
 deploy:
