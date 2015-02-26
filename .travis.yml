@@ -1,4 +1,13 @@
 language: android
+
+android:
+  components:
+    - build-tools-19.0.0
+    - build-tools-19.1.0
+    - android-8
+    - android-19
+
+
 script:
 # - brew install gradle
 - sudo add-apt-repository ppa:cwchien/gradle
@@ -8,6 +17,8 @@ script:
 - echo $ANDROID_HOME
 - ls
 - sudo bash ./gradlew packageRelease
+
+
 deploy:
   provider: releases
   file:
