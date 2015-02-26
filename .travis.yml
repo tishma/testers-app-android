@@ -1,22 +1,14 @@
 language: android
-
+jdk:
+  - oraclejdk7
+  - openjdk7
+  
 android:
   components:
     - build-tools-19.0.0
-    - build-tools-19.1.0
-    - android-8
     - android-19
 
-
-script:
-# - brew install gradle
-# - sudo add-apt-repository ppa:cwchien/gradle
-# - sudo apt-get update
-# - sudo apt-get install gradle
-- gradle wrapper
-- echo $ANDROID_HOME
-- ls
-- sudo bash ./gradlew packageRelease --stacktrace
+script: bash gradlew packageRelease --info
 
 
 deploy:
