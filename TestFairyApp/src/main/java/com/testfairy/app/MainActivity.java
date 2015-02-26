@@ -32,8 +32,7 @@ public class MainActivity extends Activity {
 	private static final String MIME_TYPE_APK = "application/vnd.android.package-archive";
 	private static final String USER_AGENT = "TestFairy App " + Config.BUILD + " android mobile";
 
-//	private static final String LOGIN_URL = "https://app.testfairy.com/login/";
-	private static final String LOGIN_URL = "http://my.giltsl.gs.dev.testfairy.net/my/";
+	private static final String LOGIN_URL = "https://app.testfairy.com/login/";
 	private static final String TEMP_DOWNLOAD_FILE = "testfairy-app-download.apk";
 
 	private File localFile;
