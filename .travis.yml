@@ -8,7 +8,7 @@ android:
     - build-tools-20.0.0
     - android-19
 
-script: bash gradlew packageRelease --info
+script: bash gradlew assembleRelease --info
 
 
 deploy:
@@ -16,7 +16,8 @@ deploy:
   api-key:
     secure: "INsxSD8tXGCPahwC1wETmgVaXXXZgcR6ZWi+TgUB6pCFmtDuIusIJWowbOH4ytRcqtCezmLAjUTdNBverx3+xRGCpHdMbhvaXk1PQYfWnzuLKjSdADPqdIewvpTV2sEXt8dh5+APesgISSG7bJhB83jYFnt07Eux52BwjmCzbD4="
   file:
-    TestFairyApp/build/outputs/apk/TestFairyApp-release-unaligned.apk
+    - TestFairyApp/build/outputs/apk/TestFairyApp-release-unaligned.apk
+    - TestFairyApp/build/outputs/apk/TestFairyApp-release.apk
   skip_cleanup: true
   on:
     tags: true

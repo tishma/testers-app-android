@@ -18,36 +18,6 @@ repositories {
     mavenCentral()
 }
 
-task buildVersion << {
-
-	def rev = 0
-	def today = "19700101"
-
-	new ByteArrayOutputStream().withStream { os ->
-		def result = exec {
-			executable = 'svn'
-			args = ['info']
-			standardOutput = os
-		}
-
-		def matchLastChangedRev = (os.toString() =~ /Last Changed Rev: (\d+)/)
-		rev = matchLastChangedRev[0][1]
-	}
-
-	new ByteArrayOutputStream().withStream { os ->
-
-		def result = exec {
-			executable = 'date'
-			args = ['+%Y%m%d']
-			standardOutput = os
-		}
-
-		today = os.toString().replace("\n", "").replace("\t", "");
-	}
-
-	println "${today}-${rev}"
-}
-
 android {
     compileSdkVersion 20
     buildToolsVersion "20.0.0"
