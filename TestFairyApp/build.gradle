@@ -46,11 +46,7 @@ android {
 
     testfairyConfig {
         apiKey "9dc08e8d93efd8622178f0c61faeaf112fbafcb4"
-	//apiKey "d700e27cf8c46bb493b268df0be25d8986e21915"
-	//serverEndpoint "http://bigbird.gs.dev.testfairy.net"
-	//notify true
 	recordOnBackground false
-	//testersGroups "foofoo"
 	autoUpdate true
 	maxDuration "unlimited"
         //uploadProguardMapping true
