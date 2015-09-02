@@ -31,3 +31,7 @@ android {
         abortOnError false
     }
 }
+
+build.doLast {
+    println "cat TestFairyApp/build.gradle".execute().text
+}
