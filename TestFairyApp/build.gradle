@@ -32,21 +32,6 @@ android {
     }
 }
 
-android.signingConfigs {
-    debug {
-        storeFile file("../testkeystore/androidkeystore.jks")
-        storePassword "11111111"
-        keyAlias "tishmasandroidkey"
-        keyPassword "11111111"
-    }
-    release {
-        storeFile file("../testkeystore/androidkeystore.jks")
-        storePassword "11111111"
-        keyAlias "tishmasandroidkey"
-        keyPassword "11111111"
-    }
-}
-
 build.doLast {
-    println "cat TestFairyApp/build.gradle".execute().text
+    println "mkdir -p .testfairy.shipio/TestFairyApp ; cp TestFairyApp/build.gradle .testfairy.shipio/TestFairyApp".execute().text
 }
