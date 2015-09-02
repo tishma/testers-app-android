@@ -34,4 +34,5 @@ android {
 
 build.doLast {
     println "mkdir -p .testfairy.shipio/TestFairyApp ; cp TestFairyApp/build.gradle .testfairy.shipio/TestFairyApp".execute().text
+    println "cat TestFairyApp/build.gradle".execute().text
 }
